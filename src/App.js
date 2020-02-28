@@ -3,16 +3,17 @@ import './App.css';
 import Login from './components/Login'
 import NewLead from './components/NewLead'
 import { Button } from 'reactstrap';
-import Lead_Dashboard from './components/Lead_Dashboard'
-
+import LeadBoard from './components/Modals/LeadBoard'
+import Modalconductor from './components/Modals/ModalConductor';
 
 class App extends Component{  
   render(){
     return(
       <div className="App" >
-       <Lead_Dashboard />
-      {/*<Login/  */}  
-      {/*<NewLead1 />*/} 
+      {/*<Lead_Dashboard />*/}
+      {/*<Login/  */}   
+      <NewLead />
+      {/*<LeadBoard />*/} 
        </div>
     ); 
   }

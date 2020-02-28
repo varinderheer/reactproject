@@ -1,47 +1,92 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios'
 import { Container, Row , Col } from 'reactstrap';
-import { Button, Label, Input, FormGroup } from 'reactstrap';
+import { Button, Label, Input, FormGroup,Form} from 'reactstrap';
 
 
-const NewLead = () => {
-    const eventSn = () => {
-        alert("Submit and New Lead")
+class NewLead extends Component {
+
+    constructor(props){
+        super(props)
+        this.state={
+                title:'',
+                source:'',
+                description:'',
+                url:'',
+                domain:'',
+                keyword:'', 
+                attachment:'',
+                technology:'',
+                est_budget:"",
+                referredby:'',
+                assignto:'',
+            /*prospect details*/
+                fullname:'',
+                email:'',
+                company:'',
+                registration:'',
+                skypeId:'',
+                address:'',
+                city:'',
+                state:'',
+                country:'',
+                phone:'',
+        };
     }
-    const eventS = () => {
-        alert("Submit Lead")
+    changeHandler = (e) =>{
+        this.setState({  [e.target.name]:e.target.value})
     }
-    const eventC = () => {
-        alert("Cancelled!!")
-    }
-  return (
-    <Container className="my-5 px-5 py-4 border border-secondary bg-light">
-        <Row className="mt-2">
-            <Col>
-                <h2>New Lead</h2>
-            </Col>
-        </Row>
-        <Row className="mt-2">
-            <Col sm="7">
-                <Label>Title*</Label>
-                <Input placeholder="Title" />
-                <Label className="mt-2">Description</Label>
-                <Input type="textarea" rows={7}/>
-            </Col>
-            <Col sm="5">
+    submitHandler= (e) =>{
+        e.preventDefault()
+        console.log(this.state);
+        axios
+			.post('http://127.0.0.1:8001/api/leadapp/', this.state)
+			.then(response => {
+				console.log(response)
+			})
+			.catch(error => {
+				console.log(error)
+			})
+	}
+
+            
+    
+
+    render(){
+        const {title,source,description,url,domain,keyword,attachment,technology,est_budget,referredby,assignto,/*prospect details*/fullname,email,company,registration,skypeId,address,city,state,country,phone,}=this.state
+  return ( 
+      <div>
+      <Form onSubmit={this.submitHandler} enctype="multipart/form-data">
+         <Container className="my-5 px-5 py-4 border border-secondary bg-light">
+            <Row className="mt-2">
+                <Col>
+                    <h2>New Lead</h2>
+                 </Col>
+            </Row>
+            <Row className="mt-2">
+                <Col sm="7">
+                    <Label>Title*</Label>
+                    <Input placeholder="Title" name="title" value={title} onChange={this.changeHandler}/>
+                    <Label className="mt-2">Description</Label>
+                    <Input type="textarea" rows="7" name="description" value={description} onChange={this.changeHandler}/ >
+                </Col> 
+                <Col sm="5">
                 <Label>Source</Label>
-                <Input type="select">
+                <Input type="select"  name="source" value={source} onChange={this.changeHandler}>
+                    <option>choose</option>
                     <option>1</option>
                     <option>2</option>
                 </Input>
                 <Label className="mt-2">URL</Label>
-                <Input placeholder="URL" />
+                <Input placeholder="URL" name="url" value={url} onChange={this.changeHandler}/>
                 <Label className="mt-2">Domain</Label>
-                <Input type="select">
-                    <option>1</option>
+                <Input type="select" name="domain" value={domain} onChange={this.changeHandler}>
+                    <option>choose</option>
+                    <option>1</option> 
                     <option>2</option>
-                </Input>
+                </Input> 
                 <Label className="mt-2">Keywords / Tags</Label>
-                <Input placeholder="Keywords or Tags" />
+                <Input placeholder="Keywords or Tags"name="keyword" value={keyword} onChange={this.changeHandler}/>
             </Col>
         </Row>
         <Row className="mt-5">
@@ -52,7 +97,7 @@ const NewLead = () => {
                     </Col>
                     <Col>
                         <Label className="btn btn-primary px-4" for="addfile">Add</Label>
-                        <Input type="file" id="addfile" className="d-none"/>
+                        <Input type="file" id="addfile" className="d-none" name="attachment" value={attachment} onChange={this.changeHandler}/>
                     </Col>
                 </Row> 
                 <Row className="mt-2">
@@ -60,7 +105,7 @@ const NewLead = () => {
                         <Label>Estimated Budget ($)</Label>
                     </Col>
                     <Col>
-                        <Input placeholder="Budget"/>
+                        <Input placeholder="Budget" name="est_budget" value={est_budget} onChange={this.changeHandler}/>
                     </Col>
                 </Row>
                 <Row className="mt-3">
@@ -68,13 +113,14 @@ const NewLead = () => {
                         <Label>Referred By</Label>
                     </Col>
                     <Col>
-                        <Input placeholder="Referred By"/>
+                        <Input placeholder="Referred By" name="referredby" value={referredby} onChange={this.changeHandler}/>
                     </Col>
                 </Row>
             </Col>
             <Col sm="5" className="mt-2">
                 <Label>Technology</Label>
-                <Input type="select">
+                <Input type="select" name="technology"value={technology} onChange={this.changeHandler}>
+                    <option>choose</option>
                     <option>1</option>
                     <option>2</option>
                 </Input>
@@ -86,7 +132,8 @@ const NewLead = () => {
                         </Label>
                     </Col>
                     <Col className="mt-3">
-                        <Input type="select">
+                        <Input type="select" name="assignto"value={assignto} onChange={this.changeHandler}>
+                            <option>choose</option>
                             <option>1</option>
                             <option>2</option>
                         </Input>
@@ -110,7 +157,7 @@ const NewLead = () => {
                             <Label>Full Name</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="Full Name"/>
+                            <Input placeholder="Full Name" name="fullname" value={fullname} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1"></Col>
                     </Row>
@@ -119,16 +166,16 @@ const NewLead = () => {
                             <Label>Email</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="Email"/>
+                            <Input placeholder="Email"name="email" value={email} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1">+</Col>
-                    </Row>
+                    </Row>      
                     <Row className="mt-2">
                         <Col sm="5">
                             <Label>Company</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="Company"/>
+                            <Input placeholder="Company" name="company"value={company} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1"></Col>
                     </Row>
@@ -137,7 +184,7 @@ const NewLead = () => {
                             <Label>Designation</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="Designation"/>
+                            <Input placeholder="Designation" name="registration" value={registration} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1"></Col>
                     </Row>
@@ -146,7 +193,7 @@ const NewLead = () => {
                             <Label>Skype ID</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="Skype ID"/>
+                            <Input placeholder="Skype ID" name="skypeId" value={skypeId} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1"></Col>
                     </Row>                   
@@ -157,7 +204,7 @@ const NewLead = () => {
                             <Label>Street Address</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="Street Address"/>
+                            <Input placeholder="Street Address"name="address" value={address} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1"></Col>
                     </Row>
@@ -166,7 +213,7 @@ const NewLead = () => {
                             <Label>City</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="City"/>
+                            <Input placeholder="City" name="city" value={city} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1"></Col>
                     </Row>
@@ -175,7 +222,7 @@ const NewLead = () => {
                             <Label>State</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="State"/>
+                            <Input placeholder="State"name="state" value={state} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1"></Col>
                     </Row>
@@ -184,7 +231,7 @@ const NewLead = () => {
                             <Label>Country</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="Country"/>
+                            <Input placeholder="Country" name="country"value={country} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1"></Col>
                     </Row>
@@ -193,7 +240,7 @@ const NewLead = () => {
                             <Label>Phone Number</Label>
                         </Col>
                         <Col sm="6">
-                            <Input placeholder="Phone Number"/>
+                            <Input placeholder="Phone Number" name="phone" value={phone} onChange={this.changeHandler}/>
                         </Col>
                         <Col sm="1">+</Col>
                     </Row>
@@ -202,16 +249,14 @@ const NewLead = () => {
         </FormGroup>            
             <Row>
                 <Col sm="2" className="mt-2">
-                    <Button color="primary" className="sbtn" onClick={eventSn}>Submit and New</Button>
+                    <Button type="submit">Submit and New</Button>
                 </Col>
-                <Col sm="2" className="mt-2">
-                    <Button color="success" className="sbtn" onClick={eventS}>Submit</Button>
-                </Col>
-                < Col sm="2" className="mt-2">
-                    <Button color="danger" className="sbtn" onClick={eventC}>Cancel</Button>
-                </Col>
+
             </Row>
     </Container>
+</Form>
+</div> 
     );
+  }
 }
 export default NewLead

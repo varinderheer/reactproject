@@ -1,12 +1,64 @@
-.lrow{
-   width: 170px; 
-}
-.ltext{
+/*.App {
+  text-align: center;
+}*/
+
+/* Login.js ------------------------------*/
+.cont{
+    margin-top: 15%;
+  }
+  .Ltext{
     text-align: center;
+  }
+  .Uptext{
+    text-align: right;
+  }
+  
+  /* NewLead.js -----------------------------*/
+  .fieldset1{
+    border:2px solid grey;
+  }
+  .fieldset2{
+    display: inline-block;
+    border:2px solid red;
+  }
+  .sbtn{
+    width:100%
+  }
+  
+  /*Lead_dashboard.js-----------------------*/
+  .coldivs{
+    width:95%;
+  }
+  .sidenav{
+    width:10%;
+    float:left;
+    background-color: LightGray;
+  }
+  .cont_lead{
+    float:left;
+  }
+ .custom-modal-style {
+width: 897px;
+height: 802px;
 }
-.radiobutton{
-    width:95%
-}
-.small{
-    width:5%
-}
+  
+  /*.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }*/
+
+
+
+  .modalbutton1{
+    float: right;
+    margin-right: 30px;
+  }
+  .modalradio{
+    width: 90%;
+  }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row , Col } from 'reactstrap';
 import { Label, Input, ListGroup, ListGroupItem } from 'reactstrap';
-import { Nav, NavItem, NavLink } from 'reactstrap';
 
 
 const Leadboard = () =>{
@@ -21,16 +20,16 @@ const Leadboard = () =>{
 										</ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">LMS System </Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">eLearning</Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">Marketplace</Label>
-								        	<Input type="radio"/>
-								        </ListGroupItem>
+								        	<Input type="radio" name="sm"/>
+								        </ListGroupItem>                          
 								      </ListGroup>
 								</Col>
 								<Col className="mt-3">
@@ -40,14 +39,14 @@ const Leadboard = () =>{
 										</ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">LMS System </Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">eLearning</Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								        <ListGroupItem>
-								        	<Label className="coldivs">Marketplace</Label>
+								        	<Label className="coldivs" name="sm">Marketplace</Label>
 								        	<Input type="radio"/>
 								        </ListGroupItem>
 								      </ListGroup>
@@ -59,15 +58,15 @@ const Leadboard = () =>{
 										</ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">LMS System </Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">eLearning</Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">Marketplace</Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								      </ListGroup>
 								</Col>
@@ -78,15 +77,15 @@ const Leadboard = () =>{
 										</ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">LMS System </Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">eLearning</Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								        <ListGroupItem>
 								        	<Label className="coldivs">Marketplace</Label>
-								        	<Input type="radio"/>
+								        	<Input type="radio" name="sm"/>
 								        </ListGroupItem>
 								      </ListGroup>
 								</Col>
