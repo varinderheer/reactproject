@@ -1,0 +1,10 @@
+{%block body %}
+ {% if user.is_authenticated %}
+  Welcome 
+    {{user.username}}
+Logout
+
+{% else %}
+Login
+
+{% endif %} {% endblock %}
